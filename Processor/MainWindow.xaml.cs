@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +21,30 @@ namespace Processor
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        Process[] processes = Process.GetProcesses();
+
+
         public MainWindow()
         {
             InitializeComponent();
+            listProcesses();
+        }
+
+        public void listProcesses()
+        {
+            var query =
+                from process in processes
+                orderby process.ProcessName
+                select new
+                {
+                    process.ProcessName,
+                    process.PagedMemorySize64,
+                    process.PeakPagedMemorySize64,
+                    process.Id
+                };
+
+            ProcessGrid.ItemsSource = query.ToList();
         }
     }
 }
