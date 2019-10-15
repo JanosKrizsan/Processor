@@ -1,7 +1,5 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -40,25 +38,27 @@ namespace Processor
             var selected = (ProcessInfo)ProcessGrid.SelectedItem;
 
             var process = _processes.Single(p => p.Id == selected.Id);
-            var sb = new StringBuilder();
+            //var sb = new StringBuilder();
 
-            int RAM = (int)Math.Round(new PerformanceCounter("Process", "Working Set", process.ProcessName).NextValue());
-            int CPU = (int)Math.Round(new PerformanceCounter("Process", "% Processor Time", process.ProcessName).NextValue());
+            //int RAM = (int)Math.Round(new PerformanceCounter("Process", "Working Set", process.ProcessName).NextValue());
+            //int CPU = (int)Math.Round(new PerformanceCounter("Process", "% Processor Time", process.ProcessName).NextValue());
 
-            sb
-                .Append("Start time: ")
-                .Append(process.StartTime)
-                .Append("\n")
-                .Append("Running time: ")
-                .Append(DateTime.Now - process.StartTime)
-                .Append("\n")
-                .Append("RAM Usage: ")
-                .Append(RAM + " %")
-                .Append("\n")
-                .Append("CPU Usage: ")
-                .Append(CPU + " %");
+            //sb
+            //    .Append("Start time: ")
+            //    .Append(process.StartTime)
+            //    .Append("\n")
+            //    .Append("Running time: ")
+            //    .Append(DateTime.Now - process.StartTime)
+            //    .Append("\n")
+            //    .Append("RAM Usage: ")
+            //    .Append(RAM + " %")
+            //    .Append("\n")
+            //    .Append("CPU Usage: ")
+            //    .Append(CPU + " %");
 
-            MessageBox.Show(sb.ToString());
+            //MessageBox.Show(sb.ToString());
+
+            new ProcessWindow(process).Show();
 
             ProcessGrid.UnselectAll();
         }
