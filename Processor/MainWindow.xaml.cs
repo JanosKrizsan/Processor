@@ -1,18 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace Processor
 {
@@ -21,30 +12,43 @@ namespace Processor
     /// </summary>
     public partial class MainWindow : Window
     {
-
-        Process[] processes = Process.GetProcesses();
-
+        private readonly Process[] _processes = Process.GetProcesses();
 
         public MainWindow()
         {
             InitializeComponent();
-            listProcesses();
+            ListProcesses();
         }
 
-        public void listProcesses()
+        public void ListProcesses()
         {
-            var query =
-                from process in processes
+            var processes =
+                from process in _processes
                 orderby process.ProcessName
-                select new
+                select new ProcessInfo
                 {
-                    process.ProcessName,
-                    process.PagedMemorySize64,
-                    process.PeakPagedMemorySize64,
-                    process.Id
+                    Id = process.Id,
+                    Name = process.ProcessName,
                 };
 
-            ProcessGrid.ItemsSource = query.ToList();
+            ProcessGrid.ItemsSource = processes;
+        }
+
+        private void ProcessGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var selected = (ProcessInfo)ProcessGrid.SelectedItem;
+
+            var process = _processes.Single(p => p.Id == selected.Id);
+            var sb = new StringBuilder();
+
+            sb
+                .Append("Start time: ")
+                .Append(process.StartTime)
+                .Append("\n")
+                .Append("Running time: ")
+                .Append(DateTime.Now - process.StartTime);
+
+            MessageBox.Show(sb.ToString());
         }
     }
 }
