@@ -25,12 +25,7 @@ namespace Processor
             var processes =
                 from process in _processes
                 orderby process.ProcessName
-                select new ProcessInfo
-                {
-                    Id = process.Id,
-                    Name = process.ProcessName,
-                    
-                };
+                select new ProcessInfo(process);
 
             ProcessGrid.ItemsSource = processes;
         }
