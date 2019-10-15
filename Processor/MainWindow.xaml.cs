@@ -29,6 +29,12 @@ namespace Processor
                 {
                     Id = process.Id,
                     Name = process.ProcessName,
+                    RAM = (new PerformanceCounter("Process", "Working Set", process.ProcessName)).ToString(),
+                    CPU = (new PerformanceCounter("Process", "% Processor Time", process.ProcessName)).ToString(),
+                    //TODO find a way to resolve access denied
+                    //StartTime = process.StartTime,
+                    //RunTime = DateTime.Now.Subtract(process.StartTime)
+
                 };
 
             ProcessGrid.ItemsSource = processes;
@@ -56,6 +62,15 @@ namespace Processor
             MessageBox.Show(sb.ToString());
 
             ProcessGrid.UnselectAll();
+        }
+        private void CheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            Topmost = true;
+        }
+
+        private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
+        {
+            Topmost = false;
         }
     }
 }
