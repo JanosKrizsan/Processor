@@ -34,8 +34,13 @@ namespace Processor
             ProcessGrid.ItemsSource = processes;
         }
 
-        private void ProcessGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ProcessGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
         {
+            if (ProcessGrid.SelectedItem == null)
+            {
+                return;
+            }
+
             var selected = (ProcessInfo)ProcessGrid.SelectedItem;
 
             var process = _processes.Single(p => p.Id == selected.Id);
@@ -49,6 +54,8 @@ namespace Processor
                 .Append(DateTime.Now - process.StartTime);
 
             MessageBox.Show(sb.ToString());
+
+            ProcessGrid.UnselectAll();
         }
     }
 }
