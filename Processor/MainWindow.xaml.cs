@@ -58,18 +58,15 @@ namespace Processor
 
         private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
-            string uriString = $"http://www.google.com/search?q={SearchInput.Text}";
+            var uriString = $"http://www.google.com/search?q={SearchInput.Text}";
             
-            if (string.IsNullOrWhiteSpace(SearchInput.Text))
+            if (string.IsNullOrWhiteSpace(SearchInput.Text) || e.Key != System.Windows.Input.Key.Enter)
             {
                 return;
             }
 
-            if (e.Key == System.Windows.Input.Key.Enter)
-            {
-                Process.Start(uriString);
-                SearchInput.Clear();
-            }
+            Process.Start(uriString);
+            SearchInput.Clear();
         }
     }
 }
