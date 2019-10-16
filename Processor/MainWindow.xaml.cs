@@ -1,8 +1,5 @@
-﻿using System.Collections.Specialized;
-using System.Diagnostics;
-using System.IO;
+﻿using System.Diagnostics;
 using System.Linq;
-using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
