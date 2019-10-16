@@ -9,20 +9,22 @@ namespace Processor
     /// </summary>
     public partial class ProcessWindow : Window
     {
+        private readonly Process _process;
+
         public ProcessWindow(Process process)
         {
-            Process = process;
+            _process = process;
 
             InitializeComponent();
             RefreshValues();
         }
 
-        public Process Process { get; set; }
+        public int ProcessId => _process.Id;
 
         public void RefreshValues()
         {
-            StartTime.Content = Process.StartTime;
-            Runtime.Content = DateTime.Now - Process.StartTime;
+            StartTime.Content = _process.StartTime;
+            Runtime.Content = DateTime.Now - _process.StartTime;
 
             // TODO: CPU, RAM, Threads
         }

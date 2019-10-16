@@ -30,7 +30,7 @@ namespace Processor
 
         private void ProcessGrid_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var process = Util.GetSelectedProcess(sender as DataGrid, _processes);
+            var process = Util.GetSelectedProcess(sender as DataGrid);
 
             if (Util.GetProcessWindow(process) == null)
             {
@@ -40,7 +40,7 @@ namespace Processor
 
         private void ProcessGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            var process = Util.GetSelectedProcess(sender as DataGrid, _processes);
+            var process = Util.GetSelectedProcess(sender as DataGrid);
             var window = Util.GetProcessWindow(process);
             window?.RefreshValues();
         }

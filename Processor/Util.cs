@@ -11,7 +11,7 @@ namespace Processor
         {
             foreach (var window in Application.Current.Windows)
             {
-                if (window is ProcessWindow pWindow && Equals(pWindow.Process, process))
+                if (window is ProcessWindow pWindow && pWindow.ProcessId == process.Id)
                 {
                     return pWindow;
                 }
@@ -20,7 +20,7 @@ namespace Processor
             return null;
         }
 
-        public static Process GetSelectedProcess(DataGrid processGrid, Process[] processes)
+        public static Process GetSelectedProcess(DataGrid processGrid)
         {
             if (processGrid.SelectedItem == null)
             {
@@ -29,7 +29,7 @@ namespace Processor
 
             var selected = (ProcessInfo) processGrid.SelectedItem;
 
-            return processes.SingleOrDefault(p => p.Id == selected.Id);
+            return Process.GetProcessById(selected.Id);
         }
     }
 }
