@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -58,9 +59,13 @@ namespace Processor
 
             //MessageBox.Show(sb.ToString());
 
-            new ProcessWindow(process).Show();
+            if (!IsWindowOpen(process))
+            {
+                new ProcessWindow(process).Show();
+            }
 
             ProcessGrid.UnselectAll();
+
         }
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
@@ -70,6 +75,19 @@ namespace Processor
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;
+        }
+
+        private static bool IsWindowOpen(IDisposable process)
+        {
+            foreach (var window in Application.Current.Windows)
+            {
+                if (window is ProcessWindow pWindow && Equals(pWindow.Process, process))
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
