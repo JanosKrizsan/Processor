@@ -11,6 +11,9 @@
         <Label x:Name="StartTime" Content="" HorizontalAlignment="Left" Margin="216,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
         <Label Content="Running time:" HorizontalAlignment="Left" Margin="90,139,0,0" VerticalAlignment="Top"/>
         <Label x:Name="RunningTime" Content="" HorizontalAlignment="Left" Margin="216,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
-
+        <Label Content="RAM Usage:" HorizontalAlignment="Left" Margin="90,171,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="RamData" Content="" HorizontalAlignment="Left" Margin="216,171,0,0" VerticalAlignment="Top"/>
+        <Label Content="CPU Usage:" HorizontalAlignment="Left" Margin="90,202,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CpuData" Content="" HorizontalAlignment="Left" Margin="216,202,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

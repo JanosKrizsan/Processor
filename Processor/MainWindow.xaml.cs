@@ -39,25 +39,6 @@ namespace Processor
             var selected = (ProcessInfo)ProcessGrid.SelectedItem;
 
             var process = _processes.Single(p => p.Id == selected.Id);
-            //var sb = new StringBuilder();
-
-            //int RAM = (int)Math.Round(new PerformanceCounter("Process", "Working Set", process.ProcessName).NextValue());
-            //int CPU = (int)Math.Round(new PerformanceCounter("Process", "% Processor Time", process.ProcessName).NextValue());
-
-            //sb
-            //    .Append("Start time: ")
-            //    .Append(process.StartTime)
-            //    .Append("\n")
-            //    .Append("Running time: ")
-            //    .Append(DateTime.Now - process.StartTime)
-            //    .Append("\n")
-            //    .Append("RAM Usage: ")
-            //    .Append(RAM + " %")
-            //    .Append("\n")
-            //    .Append("CPU Usage: ")
-            //    .Append(CPU + " %");
-
-            //MessageBox.Show(sb.ToString());
 
             if (!IsWindowOpen(process))
             {
