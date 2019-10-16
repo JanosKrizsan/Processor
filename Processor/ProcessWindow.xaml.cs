@@ -23,10 +23,18 @@ namespace Processor
 
         public void RefreshValues()
         {
+            Title = _process.ProcessName;
+
             StartTime.Content = _process.StartTime;
             Runtime.Content = DateTime.Now - _process.StartTime;
 
-            // TODO: CPU, RAM, Threads
+            var ramCounter = new PerformanceCounter("Process", "Private Bytes", _process.ProcessName, true);
+            var cpuCounter = new PerformanceCounter("Process", "% Processor Time", _process.ProcessName, true);
+
+            RamData.Content = (Math.Round(ramCounter.NextValue() / 1024 / 1024, 2)) + " MB";
+            CpuData.Content = (Math.Round(cpuCounter.NextValue() / Environment.ProcessorCount, 2)) + " %";
+
+            ThreadData.Content = _process.Threads.Count;
         }
     }
 }
