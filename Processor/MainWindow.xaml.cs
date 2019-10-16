@@ -1,5 +1,8 @@
-﻿using System.Diagnostics;
+﻿using System.Collections.Specialized;
+using System.Diagnostics;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +19,7 @@ namespace Processor
         {
             InitializeComponent();
             ListProcesses();
+            
         }
 
         public void ListProcesses()
@@ -53,6 +57,22 @@ namespace Processor
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;
+        }
+
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            string uriString = $"http://www.google.com/search?q={SearchInput.Text}";
+            
+            if (string.IsNullOrWhiteSpace(SearchInput.Text))
+            {
+                return;
+            }
+
+            if (e.Key == System.Windows.Input.Key.Enter)
+            {
+                Process.Start(uriString);
+                SearchInput.Clear();
+            }
         }
     }
 }
