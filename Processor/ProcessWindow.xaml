@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Processor"
         mc:Ignorable="d"
-        Title="ProcessWindow" Height="450" Width="800">
+        Title="ProcessWindow" Height="315" Width="315" >
     <Grid>
-        <Label Content="Start time:" HorizontalAlignment="Left" Margin="90,108,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="StartTime" Content="" HorizontalAlignment="Left" Margin="216,108,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
-        <Label Content="Running time:" HorizontalAlignment="Left" Margin="90,139,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="RunningTime" Content="" HorizontalAlignment="Left" Margin="216,139,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
+        <Label Content="Start time:" HorizontalAlignment="Left" Margin="30,59,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="StartTime" Content="" HorizontalAlignment="Left" Margin="131,59,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
+        <Label Content="Running time:" HorizontalAlignment="Left" Margin="30,90,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="RunningTime" Content="" HorizontalAlignment="Left" Margin="131,90,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
 
     </Grid>
 </Window>
