@@ -36,5 +36,10 @@ namespace Processor
 
             ThreadData.Content = _process.Threads.Count;
         }
+
+        private void ThreadsShow_Click(object sender, RoutedEventArgs e)
+        {
+            new ThreadsWindow(_process);
+        }
     }
 }

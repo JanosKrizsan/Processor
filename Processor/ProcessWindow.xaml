@@ -17,5 +17,6 @@
     <Label x:Name="CpuData" Content="" HorizontalAlignment="Left" Margin="156,157,0,0" VerticalAlignment="Top"/>
     <Label Content="Threads:" HorizontalAlignment="Left" Margin="59,191,0,0" VerticalAlignment="Top"/>
     <Label x:Name="ThreadData" Content="" HorizontalAlignment="Left" Margin="156,191,0,0" VerticalAlignment="Top"/>
-  </Grid>
+        <Button x:Name="ThreadsShow" Content="Show Threads" HorizontalAlignment="Left" Height="26" Margin="21,270,0,0" VerticalAlignment="Top" Width="83" Click="ThreadsShow_Click"/>
+    </Grid>
 </Window>
