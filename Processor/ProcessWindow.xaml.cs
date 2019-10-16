@@ -38,6 +38,7 @@ namespace Processor
             UpdatePerformanceStats();
             RamData.Content = RAM;
             CpuData.Content = CPU;
+            ThreadData.Content = Process.Threads.Count;
         }
 
         public void UpdatePerformanceStats()
