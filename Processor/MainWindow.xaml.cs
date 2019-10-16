@@ -16,6 +16,7 @@ namespace Processor
         {
             InitializeComponent();
             ListProcesses();
+            
         }
 
         public void ListProcesses()
@@ -53,6 +54,19 @@ namespace Processor
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;
+        }
+
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var uriString = $"http://www.google.com/search?q={SearchInput.Text}";
+            
+            if (string.IsNullOrWhiteSpace(SearchInput.Text) || e.Key != System.Windows.Input.Key.Enter)
+            {
+                return;
+            }
+
+            Process.Start(uriString);
+            SearchInput.Clear();
         }
     }
 }
