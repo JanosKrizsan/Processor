@@ -11,19 +11,8 @@ namespace Processor
     {
         public Process Process { get; set; }
 
-        public string RAM { get; private set; }
-        public string CPU { get; private set; }
-
-        private readonly PerformanceCounter RamCounter;
-        private readonly PerformanceCounter CpuCounter;
-
         public ProcessWindow(Process process)
         {
-            RAM = "0 MB";
-            CPU = "0 %";
-            RamCounter = new PerformanceCounter("Process", "Private Bytes", process.ProcessName, true);
-            CpuCounter = new PerformanceCounter("Process", "% Processor Time", process.ProcessName, true);
-
             Process = process;
             InitializeComponent();
             SetValues();
@@ -35,16 +24,13 @@ namespace Processor
             StartTime.Content = Process.StartTime;
             RunningTime.Content = DateTime.Now - Process.StartTime;
 
-            UpdatePerformanceStats();
-            RamData.Content = RAM;
-            CpuData.Content = CPU;
-            ThreadData.Content = Process.Threads.Count;
-        }
+            PerformanceCounter _RamCounter = new PerformanceCounter("Process", "Private Bytes", Process.ProcessName, true);
+            PerformanceCounter _CpuCounter = new PerformanceCounter("Process", "% Processor Time", Process.ProcessName, true);
 
-        public void UpdatePerformanceStats()
-        {
-            RAM = (Math.Round(RamCounter.NextValue() / 1024 / 1024, 2)).ToString() + " MB";
-            CPU = (Math.Round(CpuCounter.NextValue() / Environment.ProcessorCount, 2)).ToString() + " %";
+            RamData.Content = (Math.Round(_RamCounter.NextValue() / 1024 / 1024, 2)) + " MB";
+            CpuData.Content = (Math.Round(_CpuCounter.NextValue() / Environment.ProcessorCount, 2)) + " %";
+
+            ThreadData.Content = Process.Threads.Count;
         }
     }
 }
