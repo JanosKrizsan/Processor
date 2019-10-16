@@ -1,5 +1,4 @@
-﻿using System;
-using System.Diagnostics;
+﻿using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,44 +28,23 @@ namespace Processor
             ProcessGrid.ItemsSource = processes;
         }
 
-        private void ProcessGrid_SelectedCellsChanged(object sender, SelectedCellsChangedEventArgs e)
+        private void ProcessGrid_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            if (ProcessGrid.SelectedItem == null)
-            {
-                return;
-            }
+            var process = Util.GetSelectedProcess(sender as DataGrid);
 
-            var selected = (ProcessInfo)ProcessGrid.SelectedItem;
-
-            var process = _processes.Single(p => p.Id == selected.Id);
-            //var sb = new StringBuilder();
-
-            //int RAM = (int)Math.Round(new PerformanceCounter("Process", "Working Set", process.ProcessName).NextValue());
-            //int CPU = (int)Math.Round(new PerformanceCounter("Process", "% Processor Time", process.ProcessName).NextValue());
-
-            //sb
-            //    .Append("Start time: ")
-            //    .Append(process.StartTime)
-            //    .Append("\n")
-            //    .Append("Running time: ")
-            //    .Append(DateTime.Now - process.StartTime)
-            //    .Append("\n")
-            //    .Append("RAM Usage: ")
-            //    .Append(RAM + " %")
-            //    .Append("\n")
-            //    .Append("CPU Usage: ")
-            //    .Append(CPU + " %");
-
-            //MessageBox.Show(sb.ToString());
-
-            if (!IsWindowOpen(process))
+            if (Util.GetProcessWindow(process) == null)
             {
                 new ProcessWindow(process).Show();
             }
-
-            ProcessGrid.UnselectAll();
-
         }
+
+        private void ProcessGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            var process = Util.GetSelectedProcess(sender as DataGrid);
+            var window = Util.GetProcessWindow(process);
+            window?.RefreshValues();
+        }
+
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
             Topmost = true;
@@ -75,19 +53,6 @@ namespace Processor
         private void CheckBox_Unchecked(object sender, RoutedEventArgs e)
         {
             Topmost = false;
-        }
-
-        private static bool IsWindowOpen(IDisposable process)
-        {
-            foreach (var window in Application.Current.Windows)
-            {
-                if (window is ProcessWindow pWindow && Equals(pWindow.Process, process))
-                {
-                    return true;
-                }
-            }
-
-            return false;
         }
     }
 }
