@@ -14,15 +14,15 @@ namespace Processor
             Process = process;
 
             InitializeComponent();
-            SetValues();
+            RefreshValues();
         }
 
         public Process Process { get; set; }
 
-        private void SetValues()
+        public void RefreshValues()
         {
             StartTime.Content = Process.StartTime;
-            RunningTime.Content = DateTime.Now - Process.StartTime;
+            Runtime.Content = DateTime.Now - Process.StartTime;
 
             // TODO: CPU, RAM, Threads
         }
