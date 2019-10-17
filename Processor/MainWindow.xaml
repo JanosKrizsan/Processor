@@ -9,6 +9,7 @@
     <Grid>
         <DataGrid x:Name="ProcessGrid"  ColumnWidth="*" HorizontalAlignment="Left" Height="254" Margin="112,78,0,0" VerticalAlignment="Top" Width="534" IsReadOnly="True" MouseDoubleClick="ProcessGrid_MouseDoubleClick" MouseLeftButtonUp="ProcessGrid_MouseLeftButtonUp"/>
         <CheckBox Content="Always on top" HorizontalAlignment="Left" Margin="19,19,0,0" VerticalAlignment="Top" Checked="CheckBox_Checked" Unchecked="CheckBox_Unchecked"/>
-
+        <TextBox x:Name="SearchInput" BorderThickness="2" HorizontalAlignment="Left" Height="23" Margin="625,20,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyDown="SearchInput_KeyDown"/>
+        <Label Content="Search the Web:" HorizontalAlignment="Left" Margin="524,19,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

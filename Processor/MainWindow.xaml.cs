@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics;
 using System.Linq;
+using System.Threading;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -16,6 +17,7 @@ namespace Processor
         {
             InitializeComponent();
             ListProcesses();
+            
         }
 
         public void ListProcesses()
@@ -31,6 +33,7 @@ namespace Processor
         private void ProcessGrid_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             var process = Util.GetSelectedProcess(sender as DataGrid);
+            SearchInput.Text = process.ProcessName;
 
             if (Util.GetProcessWindow(process) == null)
             {
@@ -54,9 +57,29 @@ namespace Processor
         {
             Topmost = false;
         }
-        public int MyProperty { get; set; }
 
-        
+        private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
+        {
+            var searchText = SearchInput.Text;
+            var uriString = $"http://www.google.com/search?q={searchText}";
+            
+            if (e.Key != System.Windows.Input.Key.Enter)
+            {
+                return;
 
+            } else { SearchInput.Clear(); }
+
+            if (string.IsNullOrWhiteSpace(searchText))
+            {
+                uriString = "https://github.com/JanosKrizsan/Processor";
+            }
+
+
+            //creates a new thread where the new process executes, then promptly stops it, aborting the thread
+            Thread searchStrings = new Thread(new ThreadStart(() =>  Process.Start(uriString) ));
+            searchStrings.Start();
+            Thread.Sleep(10);
+            searchStrings.Abort();
+        }
     }
 }

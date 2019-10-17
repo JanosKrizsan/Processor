@@ -43,5 +43,9 @@ namespace Processor
         {
             new CommentsForProcess(_process).Show();
         }
+        private void ThreadsShow_Click(object sender, RoutedEventArgs e)
+        {
+            new ThreadsWindow(_process);
+        }
     }
 }
