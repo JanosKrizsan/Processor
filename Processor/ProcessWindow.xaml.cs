@@ -41,6 +41,7 @@ namespace Processor
 
         private void Comments_Click(object sender, RoutedEventArgs e)
         {
+            Util.HandleOpenedCommentsWindow();
             new CommentsForProcess(_process).Show();
         }
         private void ThreadsShow_Click(object sender, RoutedEventArgs e)

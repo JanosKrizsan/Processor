@@ -22,17 +22,20 @@ namespace Processor
     /// </summary>
     public partial class CommentsForProcess : Window
     {
-        private int _id;
         private readonly string _path = "comments.csv";
+        private readonly int _processId;
 
         public List<Comment> CommentsToDisplay { get; set; } = new List<Comment>();
         public CommentsForProcess(Process process)
         {
             InitializeComponent();
-            _id = process.Id;
+            _processId = process.Id;
+            ProcessName = process.ProcessName;
             CreateCsvFile();
             ReadComments();
         }
+
+        public string ProcessName { get; }
 
         private void CreateCsvFile()
         {
@@ -44,17 +47,17 @@ namespace Processor
 
         private void AddNew_Click(object sender, RoutedEventArgs e)
         {
-            AddNewCommentToProcess();
+            SaveComment();
         }
 
-        private void AddNewCommentToProcess()
+        public void SaveComment()
         {
             var commentText = NewComment.Text.Trim();
             commentText = Regex.Replace(commentText, @"\s+", " ", RegexOptions.Multiline);
 
             using (StreamWriter writer = File.AppendText(_path))
             {
-                writer.WriteLine($"{_id},{commentText}");
+                writer.WriteLine($"{_processId},{commentText}");
             }
 
             ReadComments();
@@ -69,7 +72,7 @@ namespace Processor
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if (!line.Contains(_id.ToString()))
+                    if (!line.Contains(_processId.ToString()))
                     {
                         lineList.Add(line);
                     }
@@ -91,7 +94,7 @@ namespace Processor
                 {
                     var line = reader.ReadLine();
                     string[] commentData = line.Split(',');
-                    if (commentData.Length > 0 && commentData[0] == _id.ToString())
+                    if (commentData.Length > 0 && commentData[0] == _processId.ToString())
                     {
                         CommentListBox.Items.Add(new ListBoxItem().DataContext = string.Join(", ", commentData.Skip(1)));
                     }
@@ -103,7 +106,7 @@ namespace Processor
         {
             if (e.Key == Key.Enter)
             {
-                AddNewCommentToProcess();
+                SaveComment();
             }
 
         }
