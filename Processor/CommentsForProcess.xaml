@@ -5,17 +5,18 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Processor"
         mc:Ignorable="d"
-        Title="CommentsToProcess" Height="450" Width="800">
+        Title="CommentsToProcess" Height="357" Width="600">
     <Grid>
-        <ListBox x:Name="CommentListBox" HorizontalAlignment="Left" Height="114" Margin="98,63,0,0" VerticalAlignment="Top" Width="534">
+        <ListBox x:Name="CommentListBox" HorizontalAlignment="Left" Height="114" Margin="34,10,0,0" VerticalAlignment="Top" Width="534">
             <ListBox.ItemTemplate>
             <DataTemplate>
                 <TextBlock Text="{Binding}" TextWrapping="Wrap"/>
             </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <TextBox x:Name="NewComment" MaxLength="150" HorizontalAlignment="Left" Height="92" Margin="98,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="534"/>
-        <Button Click="AddNew_Click" Margin="98,341,581,53" RenderTransformOrigin="0.502,0.5">Add new</Button>
-        <Button Click="Clear_Comments" Margin="519,341,160,53" RenderTransformOrigin="0.502,0.5" Content="Clear Comments"/>
+        <TextBox x:Name="NewComment" MaxLength="300" HorizontalAlignment="Left" Height="92" Margin="34,146,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="534" KeyDown="NewComment_KeyDown"/>
+        <Button Click="AddNew_Click" Content="Add New" HorizontalAlignment="Left" Margin="75,282,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Click="Clear_Comments" Content="Clear All" HorizontalAlignment="Left" Margin="441,282,0,0" VerticalAlignment="Top" Width="75"/>
+
     </Grid>
 </Window>

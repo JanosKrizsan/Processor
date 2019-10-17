@@ -44,6 +44,11 @@ namespace Processor
 
         private void AddNew_Click(object sender, RoutedEventArgs e)
         {
+            AddNewCommentToProcess();
+        }
+
+        private void AddNewCommentToProcess()
+        {
             var commentText = NewComment.Text.Trim();
             commentText = Regex.Replace(commentText, @"\s+", " ", RegexOptions.Multiline);
 
@@ -55,7 +60,6 @@ namespace Processor
             ReadComments();
             NewComment.Clear();
         }
-
         private void Clear_Comments(object sender, RoutedEventArgs e)
         {
             var lineList = new List<string>();
@@ -93,6 +97,15 @@ namespace Processor
                     }
                 }
             }
+        }
+
+        private void NewComment_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                AddNewCommentToProcess();
+            }
+
         }
     }
 }
