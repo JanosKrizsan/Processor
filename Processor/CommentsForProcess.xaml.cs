@@ -58,7 +58,23 @@ namespace Processor
 
         private void Clear_Comments(object sender, RoutedEventArgs e)
         {
+            var lineList = new List<string>();
+
+            using (var reader = new StreamReader(_path))
+            {
+                while (!reader.EndOfStream)
+                {
+                    var line = reader.ReadLine();
+                    if (!line.Contains(_id.ToString()))
+                    {
+                        lineList.Add(line);
+                    }
+                }
+            }
+
             File.WriteAllText(_path, string.Empty);
+            File.AppendAllLines(_path, lineList);
+
             ReadComments();
         }
 
