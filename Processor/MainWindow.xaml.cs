@@ -32,6 +32,8 @@ namespace Processor
 
         private void ProcessGrid_MouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
+            Util.HandleOpenedCommentsWindow();
+
             var process = Util.GetSelectedProcess(sender as DataGrid);
             SearchInput.Text = process.ProcessName;
 
