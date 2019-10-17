@@ -15,6 +15,7 @@
             </ListBox.ItemTemplate>
         </ListBox>
         <TextBox x:Name="NewComment" MaxLength="150" HorizontalAlignment="Left" Height="92" Margin="98,205,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="534"/>
-        <Button Click="AddNew_Click" Margin="294,337,384.6,57">Add new</Button>
+        <Button Click="AddNew_Click" Margin="98,341,581,53" RenderTransformOrigin="0.502,0.5">Add new</Button>
+        <Button Click="Clear_Comments" Margin="519,341,160,53" RenderTransformOrigin="0.502,0.5" Content="Clear Comments"/>
     </Grid>
 </Window>

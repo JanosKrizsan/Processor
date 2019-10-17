@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,17 +30,36 @@ namespace Processor
         {
             InitializeComponent();
             _id = process.Id;
+            CreateCsvFile();
             ReadComments();
+        }
+
+        private void CreateCsvFile()
+        {
+            if (!File.Exists(_path))
+            {
+                File.WriteAllText(_path, string.Empty);
+            }
         }
 
         private void AddNew_Click(object sender, RoutedEventArgs e)
         {
+            var commentText = NewComment.Text.Trim();
+            commentText = Regex.Replace(commentText, @"\s+", " ", RegexOptions.Multiline);
+
             using (StreamWriter writer = File.AppendText(_path))
             {
-                writer.WriteLine($"{_id},{NewComment.Text}");
+                writer.WriteLine($"{_id},{commentText}");
             }
+
             ReadComments();
             NewComment.Clear();
+        }
+
+        private void Clear_Comments(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllText(_path, string.Empty);
+            ReadComments();
         }
 
         private void ReadComments()
