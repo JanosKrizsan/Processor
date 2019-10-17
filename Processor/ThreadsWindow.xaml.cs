@@ -15,7 +15,7 @@ namespace Processor
         {
             InitializeComponent();
             SetupValues(process);
-            Show();
+            ShowDialog();
         }
 
         private void SetupValues(Process process)
