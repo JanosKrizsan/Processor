@@ -17,5 +17,6 @@
     <Label x:Name="CpuData" Content="" HorizontalAlignment="Left" Margin="156,157,0,0" VerticalAlignment="Top"/>
     <Label Content="Threads:" HorizontalAlignment="Left" Margin="59,191,0,0" VerticalAlignment="Top"/>
     <Label x:Name="ThreadData" Content="" HorizontalAlignment="Left" Margin="156,191,0,0" VerticalAlignment="Top"/>
-  </Grid>
+        <Button Click="Comments_Click" Margin="59,234,150.2,56.6">Comments</Button>
+    </Grid>
 </Window>

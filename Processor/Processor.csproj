@@ -58,8 +58,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Comment.cs" />
+    <Compile Include="CommentsData.cs" />
+    <Compile Include="CommentsForProcess.xaml.cs">
+      <DependentUpon>CommentsForProcess.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ProcessInfo.cs" />
     <Compile Include="Util.cs" />
+    <Page Include="CommentsForProcess.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

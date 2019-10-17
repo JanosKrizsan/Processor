@@ -54,5 +54,9 @@ namespace Processor
         {
             Topmost = false;
         }
+        public int MyProperty { get; set; }
+
+        
+
     }
 }
