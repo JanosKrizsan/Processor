@@ -5,19 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Processor"
         mc:Ignorable="d"
+        Icon="Icons/process.ico"
         Title="ProcessWindow" Height="347" Width="354">
-  <Grid>
-    <Label Content="Start time:" HorizontalAlignment="Left" Margin="59,63,0,0" VerticalAlignment="Top"/>
-    <Label x:Name="StartTime" Content="" HorizontalAlignment="Left" Margin="156,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
-    <Label Content="Runtime:" HorizontalAlignment="Left" Margin="59,94,0,0" VerticalAlignment="Top"/>
-    <Label x:Name="Runtime" Content="" HorizontalAlignment="Left" Margin="156,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
-    <Label Content="RAM Usage:" HorizontalAlignment="Left" Margin="59,126,0,0" VerticalAlignment="Top"/>
-    <Label x:Name="RamData" Content="" HorizontalAlignment="Left" Margin="156,126,0,0" VerticalAlignment="Top"/>
-    <Label Content="CPU Usage:" HorizontalAlignment="Left" Margin="59,157,0,0" VerticalAlignment="Top"/>
-    <Label x:Name="CpuData" Content="" HorizontalAlignment="Left" Margin="156,157,0,0" VerticalAlignment="Top"/>
-    <Label Content="Threads:" HorizontalAlignment="Left" Margin="59,191,0,0" VerticalAlignment="Top"/>
-    <Label x:Name="ThreadData" Content="" HorizontalAlignment="Left" Margin="156,191,0,0" VerticalAlignment="Top"/>
-    <Button Click="Comments_Click" Margin="59,273,197,0" Content="Comments" VerticalAlignment="Top" Height="26"></Button>
-    <Button x:Name="ThreadsShow" Content="Show Thread(s)" HorizontalAlignment="Left" Height="26" Margin="59,234,0,0" VerticalAlignment="Top" Width="90" Click="ThreadsShow_Click"/>
+    <Grid>
+        <Label Content="Start time:" HorizontalAlignment="Left" Margin="59,63,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="StartTime" Content="" HorizontalAlignment="Left" Margin="156,63,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
+        <Label Content="Runtime:" HorizontalAlignment="Left" Margin="59,94,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Runtime" Content="" HorizontalAlignment="Left" Margin="156,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.537,-0.073"/>
+        <Label Content="RAM Usage:" HorizontalAlignment="Left" Margin="59,126,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="RamData" Content="" HorizontalAlignment="Left" Margin="156,126,0,0" VerticalAlignment="Top"/>
+        <Label Content="CPU Usage:" HorizontalAlignment="Left" Margin="59,157,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="CpuData" Content="" HorizontalAlignment="Left" Margin="156,157,0,0" VerticalAlignment="Top"/>
+        <Label Content="Threads:" HorizontalAlignment="Left" Margin="59,191,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThreadData" Content="" HorizontalAlignment="Left" Margin="156,191,0,0" VerticalAlignment="Top"/>
+        <Button Click="Comments_Click" Margin="59,273,197,0" Content="Comments" VerticalAlignment="Top" Height="26"></Button>
+        <Button x:Name="ThreadsShow" Content="Show Thread(s)" HorizontalAlignment="Left" Height="26" Margin="59,234,0,0" VerticalAlignment="Top" Width="90" Click="ThreadsShow_Click"/>
+        <Image Source="Icons/cpu.ico" HorizontalAlignment="Left" Height="17" Margin="36,162,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="1.02,0.679"/>
+        <Image Source="Icons/ram.ico" HorizontalAlignment="Left" Height="17" Margin="37,131,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="1.02,0.679"/>
+        <Image Source="Icons/running.ico" HorizontalAlignment="Left" Height="16" Margin="37,100,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="1.02,0.679"/>
+        <Image Source="Icons/clock.ico" HorizontalAlignment="Left" Height="16" Margin="37,70,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="1.02,0.679"/>
+        <Image Source="Icons/threadimage2.ico" HorizontalAlignment="Left" Height="16" Margin="39,197,0,0" VerticalAlignment="Top" Width="17" RenderTransformOrigin="0.49,0.529"/>
     </Grid>
 </Window>

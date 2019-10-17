@@ -17,7 +17,7 @@ namespace Processor
         {
             InitializeComponent();
             ListProcesses();
-            
+
         }
 
         public void ListProcesses()
@@ -61,7 +61,7 @@ namespace Processor
         private void SearchInput_KeyDown(object sender, System.Windows.Input.KeyEventArgs e)
         {
             var searchText = SearchInput.Text;
-            var uriString = $"http://www.google.com/search?q={searchText}";
+            var urlString = $"http://www.google.com/search?q={searchText}";
             
             if (e.Key != System.Windows.Input.Key.Enter)
             {
@@ -71,12 +71,12 @@ namespace Processor
 
             if (string.IsNullOrWhiteSpace(searchText))
             {
-                uriString = "https://github.com/JanosKrizsan/Processor";
+                urlString = "https://github.com/JanosKrizsan/Processor";
             }
 
 
             //creates a new thread where the new process executes, then promptly stops it, aborting the thread
-            Thread searchStrings = new Thread(new ThreadStart(() =>  Process.Start(uriString) ));
+            Thread searchStrings = new Thread(new ThreadStart(() =>  Process.Start(urlString) ));
             searchStrings.Start();
             Thread.Sleep(10);
             searchStrings.Abort();

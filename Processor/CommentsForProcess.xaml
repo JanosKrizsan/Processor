@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Processor"
         mc:Ignorable="d"
+        Icon="Icons/comments.ico"
         Title="CommentsToProcess" Height="357" Width="600">
     <Grid>
         <ListBox x:Name="CommentListBox" HorizontalAlignment="Left" Height="114" Margin="34,10,0,0" VerticalAlignment="Top" Width="534">

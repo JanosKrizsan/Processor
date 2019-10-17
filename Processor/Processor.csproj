@@ -124,5 +124,19 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\comments.ico" />
+    <Resource Include="Icons\cpu.ico" />
+    <Resource Include="Icons\process.ico" />
+    <Resource Include="Icons\ram.ico" />
+    <Resource Include="Icons\taskmanager.ico" />
+    <Resource Include="Icons\thread.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\clock.ico" />
+    <Resource Include="Icons\running.ico" />
+    <Resource Include="Icons\threadimage.ico" />
+    <Resource Include="Icons\threadimage2.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

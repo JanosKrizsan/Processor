@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Processor"
         mc:Ignorable="d"
+        Icon="Icons/thread.ico"
         Title="" Height="257.765" Width="615.313" ResizeMode="NoResize">
     <Grid>
         <ListBox x:Name="ThreadsList" HorizontalAlignment="Center" VerticalAlignment="Center" Height="196" Margin="10,23,10,10" Width="589"/>
