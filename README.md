@@ -1,23 +1,41 @@
-# ProcessNote
-1st TW week exercise in .NET basics module
+# Processor
+![Processors](https://imgur.com/eqLRUrX.png)<br>
 
 ## Description
-As an IT administrator I would like to have to check what kind of processes are running on the machine. I would like to make comment on it. As an IT administrator I would like to get the running process names and If I select one of it I would like to see some major property of it.
-These are:
+A basic replacement for the Task Manager, it includes such features as:
 * CPU usage
 * Memory usage
 * Running time
 * Start time
-* Threads of it in another dialog.
+* Threads of a process viewable
+* Commenting per process
 
-I would like to comment textbox to left some note on it.
+### Further Feature set:
+* Notifications if comments are not saved
+* Lists processes, presented by PID + Name
+* Shows required attributes when I select a process
+* By double clicking, refreshes these attributes
+* New dialog opens to show the threads of a process
+* Comment are saved in memory
+* Always on top option
 
-### Feature set:
-* Application can be started and stopped normally
-* Notify me to remember my comments are not saved.
-* List processes, presented by PID + Name
-* Show required attributes when I select a process
-* By double clicking refresh these attributes
-* New dialog to show the threads of the process
-* Comment saving in memory
-* Always on the top function is selectable
+## Code
+
+Getting and assigning the RAM and CPU values.
+```
+var ramCounter = new PerformanceCounter("Process", "Private Bytes", _process.ProcessName, true);
+var cpuCounter = new PerformanceCounter("Process", "% Processor Time", _process.ProcessName, true);
+
+RamData.Content = (Math.Round(ramCounter.NextValue() / 1024 / 1024, 2)) + " MB";
+CpuData.Content = (Math.Round(cpuCounter.NextValue() / Environment.ProcessorCount, 2)) + " %";
+```
+
+## Misc
+
+This was a class project that had to be made as per certain requirements.<br>
+[Image Source](wallhaven.cc)
+## Contributors
+
+[David Adam Schmidt](https://github.com/DavidAdamSchmidt)<br>
+[Balint Ats](https://github.com/BalintAts)<br>
+[Janos Krizsan](https://github.com/JanosKrizsan)
